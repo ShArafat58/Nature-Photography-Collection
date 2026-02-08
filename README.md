@@ -52,5 +52,6 @@ Click View Gallery to see uploaded images.
 
 In the owner dashboard, delete any image as needed.
 
+Checkout: https://naturelens1.netlify.app/
 
 
