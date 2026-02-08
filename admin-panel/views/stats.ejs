@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Sky Gallery</title>
+    <link rel="stylesheet" href="/admin-assets/css/admin.css">
+</head>
+
+<body class="stats-page">
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>📈 Statistics</h1>
+                <p>Gallery Analytics</p>
+            </div>
+            <div class="header-right">
+                <a href="/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
+                <a href="/logout" class="btn btn-outline">Logout</a>
+            </div>
+        </header>
+
+        <!-- Detailed Statistics -->
+        <div class="stats-detailed">
+            <div class="stat-card-large">
+                <h3>📊 Overview</h3>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Uploads</span>
+                        <span class="stat-value" id="totalUploads">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Pending Review</span>
+                        <span class="stat-value pending" id="pendingUploads">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Approved</span>
+                        <span class="stat-value approved" id="approvedUploads">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Rejected</span>
+                        <span class="stat-value rejected" id="rejectedUploads">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card-large">
+                <h3>📈 Approval Rate</h3>
+                <div class="approval-rate">
+                    <div class="rate-bar">
+                        <div class="rate-fill" id="approvalRateFill" style="width: 0%"></div>
+                    </div>
+                    <p class="rate-text">
+                        <span id="approvalRateText">0%</span> of reviewed images approved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch and display statistics
+        async function loadStatistics() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.stats;
+
+                    document.getElementById('totalUploads').textContent = stats.total || 0;
+                    document.getElementById('pendingUploads').textContent = stats.pending || 0;
+                    document.getElementById('approvedUploads').textContent = stats.approved || 0;
+                    document.getElementById('rejectedUploads').textContent = stats.rejected || 0;
+
+                    // Calculate approval rate
+                    const reviewed = (stats.approved || 0) + (stats.rejected || 0);
+                    const approvalRate = reviewed > 0 ? ((stats.approved / reviewed) * 100).toFixed(1) : 0;
+
+                    document.getElementById('approvalRateFill').style.width = approvalRate + '%';
+                    document.getElementById('approvalRateText').textContent = approvalRate + '%';
+                }
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+            }
+        }
+
+        loadStatistics();
+    </script>
+</body>
+
+</html>

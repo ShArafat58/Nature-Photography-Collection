@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Sky Gallery</title>
+    <link rel="stylesheet" href="/admin-assets/css/admin.css">
+</head>
+
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>📊 Admin Dashboard</h1>
+                <p>Welcome, <%= username %>
+                </p>
+            </div>
+            <div class="header-right">
+                <a href="/stats" class="btn btn-secondary">📈 Statistics</a>
+                <a href="/logout" class="btn btn-outline">Logout</a>
+            </div>
+        </header>
+
+        <!-- Statistics Cards -->
+        <div class="stats-container" id="statsContainer">
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="pendingCount">-</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="approvedCount">-</div>
+                    <div class="stat-label">Approved</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">❌</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="rejectedCount">-</div>
+                    <div class="stat-label">Rejected</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📸</div>
+                <div class="stat-content">
+                    <div class="stat-value" id="totalCount">-</div>
+                    <div class="stat-label">Total</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Images Section -->
+        <div class="pending-section">
+            <h2>Pending Images for Review</h2>
+
+            <div id="loadingSpinner" class="loading">
+                <div class="spinner"></div>
+                <p>Loading pending images...</p>
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <h3>🎉 All caught up!</h3>
+                <p>No pending images to review.</p>
+            </div>
+
+            <div id="pendingGrid" class="pending-grid">
+                <!-- Pending images will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejection Modal -->
+    <div id="rejectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reject Image</h3>
+                <button class="modal-close" onclick="closeRejectModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <label for="rejectionReason">Reason for rejection (optional):</label>
+                <textarea id="rejectionReason" rows="4"
+                    placeholder="e.g., Not a nature/sky photo, poor quality, inappropriate content..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeRejectModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="confirmReject()">Reject Image</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/admin-assets/js/dashboard.js"></script>
+</body>
+
+</html>

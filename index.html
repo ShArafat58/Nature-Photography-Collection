@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Upload your beautiful sky and nature photography to our community gallery">
+  <title>Nature Photography Collection - Upload</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="upload-page">
+    <!-- Background -->
+    <div class="background-image"></div>
+
+    <!-- Upload Container -->
+    <div class="upload-container">
+      <h1>🌿 Nature Photography Collection</h1>
+      <p class="subtitle">Share your beautiful sky and nature moments with the world</p>
+
+      <!-- Upload Form -->
+      <form id="uploadForm" class="upload-form">
+        <!-- Photographer Name -->
+        <div class="form-group">
+          <label for="photographer">Photographer Name *</label>
+          <input type="text" id="photographer" name="photographer" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Phone Model -->
+        <div class="form-group">
+          <label for="phoneModel">Phone Model *</label>
+          <input type="text" id="phoneModel" name="phoneModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23"
+            required>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="form-group">
+          <label for="imageUpload">Upload Photo *</label>
+          <input type="file" id="imageUpload" name="imageUpload" accept="image/jpeg,image/jpg,image/png,image/webp"
+            required>
+        </div>
+
+        <!-- Image Preview -->
+        <div id="imagePreview" class="image-preview">
+          <img id="previewImg" src="" alt="Preview">
+        </div>
+
+        <!-- Rules Section -->
+        <div class="rules-section">
+          <h3>⚠️ Important Rules</h3>
+          <ul>
+            <li>Only nature & sky photos are allowed</li>
+            <li>Adult or offensive images will be rejected</li>
+            <li>Images appear in the gallery immediately after upload</li>
+            <li>Inappropriate uploads may result in a ban</li>
+          </ul>
+        </div>
+
+        <!-- Agreement Checkbox -->
+        <label class="checkbox-label">
+          <input type="checkbox" id="agreeCheckbox">
+          I agree to the rules and confirm this is a nature/sky photo
+        </label>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading">
+          <div class="spinner">Loading...</div>
+          <p class="loading-text">Submitting your image...</p>
+        </div>
+
+        <!-- Message Display -->
+        <div id="message" class="message"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="btn btn-primary btn-block" disabled>
+          Upload Photo
+        </button>
+      </form>
+
+      <!-- View Gallery Button -->
+      <a href="gallery.html" class="btn btn-secondary btn-block">
+        View Gallery →
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/upload.js"></script>
+</body>
+
+</html>

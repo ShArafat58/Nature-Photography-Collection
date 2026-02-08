@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse beautiful sky and nature photography from our community">
+    <title>Owner Dashboard - Nature Photography Collection</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Owner specific background override to simulate BG3 */
+        .static-background {
+            filter: hue-rotate(260deg) brightness(0.7) contrast(1.2);
+            /* Deep purple/blue effect */
+        }
+
+        .gallery-item-metadata {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ddd;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .gallery-item-metadata span {
+            display: block;
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .gallery-item img {
+            height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery-page">
+        <!-- Static Background -->
+        <div class="static-background"></div>
+
+        <!-- Logout Button -->
+        <div class="back-btn">
+            <button id="logoutBtn" class="btn btn-back" style="background: #ef4444;">
+                Logout
+            </button>
+        </div>
+
+        <!-- Gallery Header -->
+        <div class="gallery-header">
+            <h1>🔒 Owner Dashboard</h1>
+            <p class="subtitle">Manage Photos & View Metadata</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <h2>📸 No Photos Yet</h2>
+            <p>The gallery is empty.</p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="galleryGrid" class="gallery-grid">
+            <!-- Gallery items will be dynamically inserted here -->
+        </div>
+
+        <!-- Modal/Lightbox -->
+        <div id="modal" class="modal">
+            <button id="modalClose" class="modal-close">✕</button>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img id="modalImg" src="" alt="Gallery Image">
+                </div>
+                <div class="modal-details">
+                    <h2>Photo Details</h2>
+
+                    <div class="detail-item">
+                        <div class="detail-label">Clicked by</div>
+                        <div class="detail-value" id="modalPhotographer">-</div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-label">Device</div>
+                        <div class="detail-value" id="modalDevice">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/owner.js"></script>
+</body>
+
+</html>
