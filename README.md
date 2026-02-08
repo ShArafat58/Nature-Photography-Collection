@@ -52,21 +52,5 @@ Click View Gallery to see uploaded images.
 
 In the owner dashboard, delete any image as needed.
 
-🗂️ Folder Structure
-Sky_Pic_Website/
-├── index.html
-├── gallery.html
-├── owner.html
-├── css/
-│   └── styles.css
-├── js/
-│   ├── config.js
-│   ├── upload.js
-│   ├── gallery.js
-│   └── owner.js
-├── assets/
-│   ├── BG2.webp
-│   ├── BG3.png
-└── uploads/
-    └── images/
-        └── .gitkeep
+
+
